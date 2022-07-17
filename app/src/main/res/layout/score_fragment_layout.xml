@@ -22,12 +22,27 @@
                 android:id="@+id/reset_game"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
                 android:src="@drawable/reset"
                 app:layout_constraintBottom_toTopOf="@id/bottom_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/sort_by_point"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/sort"
+                android:scaleType="centerInside"
+                android:padding="3dp"
+                app:layout_constraintBottom_toTopOf="@id/bottom_line"
                 app:layout_constraintEnd_toStartOf="@id/setting"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -37,9 +52,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/add_player"
                 app:layout_constraintBottom_toTopOf="@id/bottom_line"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/sort_by_point"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView

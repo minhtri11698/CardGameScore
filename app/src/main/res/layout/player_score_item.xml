@@ -52,6 +52,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
+            hideUnless="@{!isHost}"
             android:src="@drawable/add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +80,7 @@
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/minus"
+            hideUnless="@{!isHost}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/point"
             app:layout_constraintTop_toTopOf="parent"/>

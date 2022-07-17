@@ -15,25 +15,39 @@ class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(Sc
     private lateinit var playerAdapter: PlayerListAdapter
 
     override fun onViewReady() {
+        setUpAdapter()
+        setClickListener()
+    }
+
+    override fun observedData() {
+        viewModel.playerList.observe(this) {
+            playerAdapter.setData(it)
+        }
+    }
+
+    override fun getLayoutId(): Int = R.layout.score_fragment_layout
+
+    private fun setUpAdapter() {
         playerAdapter = PlayerListAdapter(
-            arrayListOf(Player(0, "Tri", 0, true), Player(1, "Tri 2", 0, false)),
+            arrayListOf(),
             GameSetting(5)
         )
         binding.scoreRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.scoreRecyclerView.adapter = playerAdapter
     }
 
-    override fun observedData() {
-//        viewModel.playerList.observe(this) {
-//            playerAdapter.setData(it)
-//        }
-    }
-
-    override fun getLayoutId(): Int = R.layout.score_fragment_layout
-
-    fun setClickListener() {
+    private fun setClickListener() {
         binding.addUser.setOnClick {
+            viewModel.playerList.value?.let {
+                it.add(Player(isHost = it.size == 0))
+            } ?: kotlin.run {
+                viewModel.playerList.value = arrayListOf(Player(isHost = true))
+            }
+            viewModel.playerList.value = viewModel.playerList.value
+        }
 
+        binding.resetGame.setOnClick {
+            viewModel.playerList.value = arrayListOf()
         }
     }
 

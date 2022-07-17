@@ -3,8 +3,6 @@ package com.example.cardgamescore.score_fragment.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardgamescore.R
 import com.example.cardgamescore.base.BaseBindingViewHolder
@@ -27,16 +25,25 @@ class PlayerListAdapter constructor(data: ArrayList<Player>, var settingData: Ga
     override fun onBindViewHolder(holder: PlayerListViewHolder, position: Int) {
         val item = list[position]
         holder.onAddPoint = {
-
+            val hostIndex = list.indexOfFirst { it.isHost }
+            if (hostIndex >= 0) {
+                list[hostIndex].playerPoint = list[hostIndex].playerPoint.minus(settingData.pointPerGame)
+                notifyItemChanged(hostIndex)
+            }
         }
         holder.onMinusPoint = {
-
+            val hostIndex = list.indexOfFirst { it.isHost }
+            if (hostIndex >= 0) {
+                list[hostIndex].playerPoint = list[hostIndex].playerPoint.plus(settingData.pointPerGame)
+                notifyItemChanged(hostIndex)
+            }
         }
         holder.onChangeHost = {
-            val index = list.indexOfFirst { it.isHost }
-            if (index >= 0) {
-                list[index].isHost = false
-                notifyItemChanged(index)
+            val hostIndex = list.indexOfFirst { it.isHost }
+            val host = list[hostIndex]
+            if (hostIndex >= 0) {
+                host.isHost = false
+                notifyItemChanged(hostIndex)
             }
         }
         holder.onBind(item)

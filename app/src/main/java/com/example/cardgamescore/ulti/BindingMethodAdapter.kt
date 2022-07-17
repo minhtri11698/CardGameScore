@@ -29,6 +29,11 @@ fun ImageView.setIsHostIcon(isHost: Boolean) {
     }
 }
 
+@BindingAdapter("hideUnless")
+fun View.hideUnless(show: Boolean) {
+    visibility = if (show) View.VISIBLE else View.INVISIBLE
+}
+
 @BindingAdapter("app:onSafeClick")
 fun View.setOnClick(
     onClickListener: View.OnClickListener
