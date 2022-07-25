@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">CardGameScore</string>
-    <string name="str_splash_notice">For internal use only.\nWe accept no responsibility or liability for any unauthorized or illegal use.</string>
+    <string name="str_input_player_name_hint">Player name…</string>
+    <string name="str_confirm">Confirm</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_add_player">Add Player</string>
+    <string name="str_warning_name">*Player name required!</string>
+    <string name="str_no_player">Add player to start the game!</string>
+    <string name="str_splash_notice">We accept no responsibility or liability for any unauthorized or illegal use.</string>
 </resources>

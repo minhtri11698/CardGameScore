@@ -1,10 +1,12 @@
 package com.example.cardgamescore.score_fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cardgamescore.R
 import com.example.cardgamescore.base.BaseFragment
 import com.example.cardgamescore.databinding.ScoreFragmentLayoutBinding
+import com.example.cardgamescore.dialog.AddUserDialog
 import com.example.cardgamescore.model.GameSetting
 import com.example.cardgamescore.model.Player
 import com.example.cardgamescore.score_fragment.adapter.PlayerListAdapter
@@ -21,6 +23,7 @@ class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(Sc
 
     override fun observedData() {
         viewModel.playerList.observe(this) {
+            binding.noPlayer.visibility = if (it.isNullOrEmpty()) View.VISIBLE else View.GONE
             playerAdapter.setData(it)
         }
     }
@@ -38,11 +41,22 @@ class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(Sc
 
     private fun setClickListener() {
         binding.addUser.setOnClick {
-            viewModel.playerList.value?.let {
-                it.add(Player(isHost = it.size == 0))
-            } ?: kotlin.run {
-                viewModel.playerList.value = arrayListOf(Player(isHost = true))
+            AddUserDialog.show(childFragmentManager).apply {
+                onConfirm = { newPlayer ->
+                    viewModel.playerList.value?.let {
+                        newPlayer.isHost = it.size == 0
+                        it.add(newPlayer)
+                    } ?: kotlin.run {
+                        newPlayer.isHost = true
+                        viewModel.playerList.value = arrayListOf(newPlayer)
+                    }
+                    viewModel.playerList.value = viewModel.playerList.value
+                }
             }
+        }
+
+        binding.sortByPoint.setOnClick {
+            viewModel.playerList.value?.sortByDescending { it.playerPoint }
             viewModel.playerList.value = viewModel.playerList.value
         }
 

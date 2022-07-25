@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.cardgamescore.di.localDataModule
 import com.example.cardgamescore.di.viewModelModule
 import com.example.cardgamescore.splash_fragment.SplashFragment
 import kotlinx.coroutines.*
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@MainActivity)
-            modules(viewModelModule)
+            modules(viewModelModule, localDataModule)
         }
         onViewReady()
     }

@@ -66,19 +66,19 @@ class PlayerListViewHolder(itemView: View, var settingData: GameSetting): BaseBi
         binding.isHost = item.isHost
         binding.playerPoint = item.playerPoint
         binding.playerName.text = item.playerName
-        binding.addPoint.setOnClick {
+        binding.addPoint.setOnClickListener {
             onAddPoint?.invoke()
             item.playerPoint = item.playerPoint.plus(settingData.pointPerGame)
             binding.playerPoint = item.playerPoint
         }
-        binding.minusPoint.setOnClick {
+        binding.minusPoint.setOnClickListener {
             onMinusPoint?.invoke()
             item.playerPoint = item.playerPoint.minus(settingData.pointPerGame)
             binding.playerPoint = item.playerPoint
         }
 
-        binding.isHostButton.setOnClick {
-            if (item.isHost) return@setOnClick
+        binding.isHostButton.setOnClickListener {
+            if (item.isHost) return@setOnClickListener
             onChangeHost?.invoke()
             item.isHost = true
             binding.isHost = true

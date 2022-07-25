@@ -11,6 +11,17 @@
         <entry key="..\:/Users/tritr/StudioProjects/CardGameScore/app/src/main/res/layout/player_score_item.xml" value="0.3625" />
         <entry key="..\:/Users/tritr/StudioProjects/CardGameScore/app/src/main/res/layout/score_fragment_layout.xml" value="0.25" />
         <entry key="..\:/Users/tritr/StudioProjects/CardGameScore/app/src/main/res/layout/splash_fragment.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/cancel_button_background.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/confirm_button_background.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/dialog_background.xml" value="0.222" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/white_background_radius_16.xml" value="0.222" />
+        <entry key="app/src/main/res/font/font.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/layout/add_user_dialog.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/player_score_item.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/score_fragment_layout.xml" value="0.10242309570312491" />
+        <entry key="app/src/main/res/layout/splash_fragment.xml" value="0.3887827555338542" />
       </map>
     </option>
   </component>

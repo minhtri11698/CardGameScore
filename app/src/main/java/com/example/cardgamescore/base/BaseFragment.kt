@@ -32,6 +32,7 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VM : BaseViewModel>(
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(getBindingVariable(), viewModel)
         binding.executePendingBindings()
+        binding
         return binding.root
     }
 

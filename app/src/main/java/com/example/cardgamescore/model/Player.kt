@@ -1,8 +1,10 @@
 package com.example.cardgamescore.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Entity(tableName = "players")
 class Player(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "playerId")
