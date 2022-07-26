@@ -8,13 +8,13 @@ import com.example.cardgamescore.base.BaseFragment
 import com.example.cardgamescore.databinding.ScoreFragmentLayoutBinding
 import com.example.cardgamescore.dialog.AddUserDialog
 import com.example.cardgamescore.model.GameSetting
-import com.example.cardgamescore.model.Player
 import com.example.cardgamescore.score_fragment.adapter.PlayerListAdapter
 import com.example.cardgamescore.ulti.setOnClick
 
 class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(ScoreViewModel::class) {
 
     private lateinit var playerAdapter: PlayerListAdapter
+    private var roundPointChanged = false
 
     override fun onViewReady() {
         setUpAdapter()
@@ -37,6 +37,15 @@ class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(Sc
         )
         binding.scoreRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.scoreRecyclerView.adapter = playerAdapter
+        playerAdapter.pointChange = {
+            if (!roundPointChanged) {
+                roundPointChanged = true
+                binding.bottomLayout.visibility = View.VISIBLE
+            }
+        }
+        playerAdapter.onLongClickItem = {
+            viewModel.playerList.value?.removeAt(it)
+        }
     }
 
     private fun setClickListener() {
@@ -50,6 +59,7 @@ class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(Sc
                         newPlayer.isHost = true
                         viewModel.playerList.value = arrayListOf(newPlayer)
                     }
+                    viewModel.insertPlayer(newPlayer)
                     viewModel.playerList.value = viewModel.playerList.value
                 }
             }
@@ -62,6 +72,18 @@ class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(Sc
 
         binding.resetGame.setOnClick {
             viewModel.playerList.value = arrayListOf()
+        }
+
+        binding.confirmEndRound.setOnClick {
+            playerAdapter.confirmDataChange()
+            roundPointChanged = false
+            binding.bottomLayout.visibility = View.GONE
+        }
+
+        binding.discardRoundChange.setOnClick {
+            playerAdapter.discardChange()
+            roundPointChanged = false
+            binding.bottomLayout.visibility = View.GONE
         }
     }
 

@@ -8,11 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.lifecycleScope
 import com.example.cardgamescore.R
+import com.example.cardgamescore.model.Player
 import kotlinx.coroutines.delay
 
 @BindingAdapter("setTextPoint")
-fun TextView.setTextPoint(playerPoint: Int) {
-    text = playerPoint.toString()
+fun TextView.setTextPoint(player: Player) {
+    val playerPoint = player.playerPoint
+    val roundPoint = player.roundPoint
+    val textPoint = when {
+        roundPoint > 0 -> "$playerPoint +$roundPoint"
+        roundPoint < 0 -> "$playerPoint $roundPoint"
+        else -> playerPoint.toString()
+    }
+    text = textPoint
     when {
         playerPoint == 0 -> setTextColor(Color.BLACK)
         playerPoint < 0 -> setTextColor(Color.RED)

@@ -1,28 +1,16 @@
 package com.example.cardgamescore
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.example.cardgamescore.di.localDataModule
-import com.example.cardgamescore.di.viewModelModule
 import com.example.cardgamescore.splash_fragment.SplashFragment
-import kotlinx.coroutines.*
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startKoin {
-            androidLogger(Level.NONE)
-            androidContext(this@MainActivity)
-            modules(viewModelModule, localDataModule)
-        }
         onViewReady()
     }
 

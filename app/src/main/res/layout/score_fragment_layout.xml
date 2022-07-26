@@ -83,8 +83,8 @@
             android:id="@+id/no_player"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:gravity="center"
             android:text="@string/str_no_player"
@@ -96,8 +96,63 @@
             android:id="@+id/score_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_layout"
             app:layout_constraintTop_toBottomOf="@id/top_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                android:id="@+id/separator"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/black"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/confirm_end_round"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/confirm_button_background"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_confirm_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/discard_round_change"
+                app:layout_constraintTop_toBottomOf="@id/separator" />
+
+            <ImageView
+                android:id="@+id/discard_round_change"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/cancel_button_background"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_close_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/confirm_end_round"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separator" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

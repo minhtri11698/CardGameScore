@@ -12,7 +12,7 @@ abstract class LocalDataBase : RoomDatabase() {
     abstract fun playerDao(): PlayerDaoDataSource
 
     companion object {
-        const val VERSION_DATABASE = 2
+        const val VERSION_DATABASE = 1
         private const val DATABASE_NAME = "player_database"
 
         fun getInstance(context: Context): LocalDataBase =

@@ -15,5 +15,7 @@ class Player(
     var playerPoint: Int = 0,
     @ColumnInfo(name = "isHost")
     var isHost: Boolean = false,
+    @ColumnInfo(name = "roundPoint")
+    var roundPoint: Int = 0
 ) {
 }
