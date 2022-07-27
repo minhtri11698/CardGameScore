@@ -51,7 +51,7 @@ fun View.setOnClick(
         if (!isClickable) return@launchWhenStarted
         isClickable = false
         onClickListener.onClick(this@setOnClick)
-        delay(500L)
+        delay(200L)
         isClickable = true
     } ?: onClickListener.onClick(this)
 }

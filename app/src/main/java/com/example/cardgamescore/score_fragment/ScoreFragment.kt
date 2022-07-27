@@ -45,6 +45,7 @@ class ScoreFragment: BaseFragment<ScoreFragmentLayoutBinding, ScoreViewModel>(Sc
         }
         playerAdapter.onLongClickItem = {
             viewModel.playerList.value?.removeAt(it)
+            viewModel.playerList.value?.let { it1 -> playerAdapter.setData(it1) }
         }
     }
 

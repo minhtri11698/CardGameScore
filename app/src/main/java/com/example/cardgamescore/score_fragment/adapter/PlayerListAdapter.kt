@@ -26,9 +26,7 @@ class PlayerListAdapter constructor(data: ArrayList<Player>, var settingData: Ga
     override fun onBindViewHolder(holder: PlayerListViewHolder, position: Int) {
         val item = list[position]
         holder.itemView.setOnLongClickListener {
-            list.removeAt(position)
             onLongClickItem?.invoke(position)
-            notifyItemRemoved(position)
             return@setOnLongClickListener true
         }
         holder.onAddPoint = {
